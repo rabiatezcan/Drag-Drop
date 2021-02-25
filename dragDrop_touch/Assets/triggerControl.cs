@@ -5,7 +5,8 @@ using UnityEngine;
 public class triggerControl : MonoBehaviour
 {
     Vector2 initialPos;
-    public Vector2 dropPosition;
+    Vector2 dropPos; 
+    bool isTrigger = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +18,27 @@ public class triggerControl : MonoBehaviour
     {
         if (gameObject.transform.tag.Contains(col.transform.tag))
         {
-            dropPosition = col.transform.position;
+            dropPos = col.transform.position; 
+            isTrigger = true; 
         }
     }
     private void OnTriggerExit2D(Collider2D col)
     {
-        dropPosition = initialPos;
+        if (gameObject.transform.tag.Contains(col.transform.tag))
+        {
+            isTrigger = false;
+        }
+    }
+
+    public void moveToPosition()
+    {
+        if (isTrigger)
+        {
+            gameObject.transform.position = dropPos;
+        }
+        else
+        {
+            gameObject.transform.position = initialPos; 
+        }
     }
 }

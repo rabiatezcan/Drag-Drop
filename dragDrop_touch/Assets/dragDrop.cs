@@ -7,7 +7,7 @@ public class dragDrop : MonoBehaviour
     [SerializeField]
     private float deltaX, deltaY;
     public Transform movebleObject;
-    private Vector2 dropPos;
+    
  
     void Update()
     {
@@ -35,8 +35,8 @@ public class dragDrop : MonoBehaviour
                 }
                 else if (touch.phase == TouchPhase.Ended)
                 {                
-                    dropPos = GameObject.FindGameObjectWithTag(movebleObject.transform.tag).GetComponent<triggerControl>().dropPosition;
-                    movebleObject.transform.position = dropPos; 
+                    movebleObject.GetComponent<triggerControl>().moveToPosition();
+                   
                     Debug.Log(movebleObject.name + " dropped.");
                 }
             }
