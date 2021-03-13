@@ -16,7 +16,7 @@ public class triggerControl : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (gameObject.transform.tag.Contains(col.transform.tag))
+        if (gameObject.transform.tag.Contains(col.transform.tag) && !col.transform.tag.Contains("drag"))
         {
             dropPos = col.transform.position; 
             isTrigger = true; 
@@ -24,7 +24,7 @@ public class triggerControl : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (gameObject.transform.tag.Contains(col.transform.tag))
+        if (gameObject.transform.tag.Contains(col.transform.tag) && !col.transform.tag.Contains("drag"))
         {
             isTrigger = false;
         }

@@ -39,10 +39,7 @@ public class dragDrop : MonoBehaviour
                    
                     Debug.Log(movebleObject.name + " dropped.");
                 }
-            }
-            
-        }
-               
+            }       
+        }     
     }
- 
 }
